@@ -35,48 +35,32 @@ with open(bank_csv, 'r', newline='') as bank_data:
     # Count Months
     month_count = len(bank_dict)
 
+    # Calculate Sum of Transactions
+    total = calculate_sum(bank_dict)
+
     # Calculate the average change
     average = sum(calculate_difference(bank_dict)) / len(calculate_difference(bank_dict))
 
+    # Calculate Greatest Increase
+    greatest_increase = max(calculate_difference(bank_dict))
+
+    # Calculate Greatest Decrease
+    greatest_decrease = min(calculate_difference(bank_dict))
+
 with open("results.txt", "w", newline='') as output:
+
+    # Write to TXT file
     output.write(f"""\n\nFinancial Analysis \n ---------------------------- \n 
     Total Months: {month_count}
-    Profit/Losses = ${calculate_sum(bank_dict):,}
+    Profit/Losses = ${total:,}
     Average Change = ${average:,.2f}
-    Greatest Increase in Profits = ${max(calculate_difference(bank_dict)):,}
-    Greatest Decrease in Profits = ${min(calculate_difference(bank_dict)):,}""")
+    Greatest Increase in Profits = ${greatest_increase:,}
+    Greatest Decrease in Profits = ${greatest_decrease:,}""")
     
+    # Print output to console
     print(f"""\n\nFinancial Analysis \n ---------------------------- \n 
     Total Months: {month_count}
-    Profit/Losses = ${calculate_sum(bank_dict):,}
+    Profit/Losses = ${total:,}
     Average Change = ${average:,.2f}
-    Greatest Increase in Profits = ${max(calculate_difference(bank_dict)):,}
-    Greatest Decrease in Profits = ${min(calculate_difference(bank_dict)):,}""")
-    
-    
-    
-    
-    # print(f"""\n\nFinancial Analysis \n ---------------------------- \n
-    #     Total Months: {month_count}\n
-    #     Profit/Losses = ${calculate_sum(bank_dict):,}\n""")
-
-    # output.write(f'Total Months: {month_count}')
-    # print(f'Total Months: {month_count}')
-
-    # output.write(f'Profit/Losses = ${calculate_sum(bank_dict):,}')
-    # print(f'Profit/Losses = ${calculate_sum(bank_dict):,}')
-
-    # output.write(f'Average Change = ${average:,.2f}')
-    # print(f'Average Change = ${average:,.2f}')
-
-    # # Calculate and display the greatest increase in profit over two periods
-    # print(f'Greatest Increase in Profits = ${max(calculate_difference(bank_dict)):,}')
-
-    # # Calculate and display the greatest decrease in profit over two periods
-    # print(f'Greatest Decrease in Profits = ${min(calculate_difference(bank_dict)):,}')
-
-
-    
-
-
-
+    Greatest Increase in Profits = ${greatest_increase:,}
+    Greatest Decrease in Profits = ${greatest_decrease:,}""")
