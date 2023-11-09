@@ -3,7 +3,7 @@ from operator import itemgetter
 
 bank_csv = os.path.join("..", "PyBank\Resources", "budget_data.csv")
 
-# Function for calculating sum of transactions
+# Function for calculating sum of profit/losses
 def calculate_sum(dict):
     net_total = 0
     for item in dict:
@@ -13,7 +13,7 @@ def calculate_sum(dict):
     
     return(net_total)
 
-# Create list for calculating average
+# Create list for calculating average change between two periods
 def calculate_average(dict):
     list = []
     for item in dict:
@@ -31,9 +31,13 @@ def calculate_average(dict):
 def calculate_difference(dict):
     list = []
     diff_list = []
+
+    # This creates a list of Tuples from the dictionary that I can manipulate and return
     for l in range(len(dict)):
         list.append(tuple([dict[l]['Date'],int(dict[l]['Profit/Losses'])]))
 
+    # This will iterate through each tuple in the list and grab the date (starting with the second element), 
+    # then grab the profit/loss and subtract the previous profit/loss from it. It will add the date and the difference to a new tuple that we can then min/max with.
     for l in range(1, len(list)):
         diff_list.append(tuple([list[l][0], (list[l][1]-list[l-1][1])]))
     return(diff_list)
@@ -51,10 +55,11 @@ with open(bank_csv, 'r', newline='') as bank_data:
     # Calculate Sum of Transactions
     total = calculate_sum(bank_dict)
 
-    # Calculate the average change
+    # Calculate the average change in profit/loss between two periods
     average = sum(calculate_average(bank_dict)) / len(calculate_average(bank_dict))
 
-    # Calculate Greatest Increase
+    # Calculate Greatest Increase - Had to use item getter to min/max on the appropriate values.
+    # https://docs.python.org/3/library/operator.html#operator.itemgetter
     max_date = max(calculate_difference(bank_dict), key=itemgetter(1))[0]
     max_diff = max(calculate_difference(bank_dict), key=itemgetter(1))[1]
 
