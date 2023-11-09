@@ -33,9 +33,9 @@ with open("..\\PyPoll\\Analysis\\results.txt", "w", newline='') as output:
     -------------------------
     Total Votes: {sum(candidate_votes)}
     -------------------------
-    {candidates[0]}: {(candidate_votes[0] / sum(candidate_votes)):.2%} ({candidate_votes[0]})
-    {candidates[1]}: {(candidate_votes[1] / sum(candidate_votes)):.2%} ({candidate_votes[1]})
-    {candidates[2]}: {(candidate_votes[2] / sum(candidate_votes)):.2%} ({candidate_votes[2]})
+    {candidates[0]}: {(candidate_votes[0] / sum(candidate_votes)):.3%} ({candidate_votes[0]})
+    {candidates[1]}: {(candidate_votes[1] / sum(candidate_votes)):.3%} ({candidate_votes[1]})
+    {candidates[2]}: {(candidate_votes[2] / sum(candidate_votes)):.3%} ({candidate_votes[2]})
     -------------------------
     Winner: {max(count_candidate_votes(votes), key=itemgetter(1))}
     -------------------------
@@ -47,9 +47,9 @@ with open("..\\PyPoll\\Analysis\\results.txt", "w", newline='') as output:
     -------------------------
     Total Votes: {sum(candidate_votes)}
     -------------------------
-    {candidates[0]}: {(candidate_votes[0] / sum(candidate_votes)):.2%} ({candidate_votes[0]})
-    {candidates[1]}: {(candidate_votes[1] / sum(candidate_votes)):.2%} ({candidate_votes[1]})
-    {candidates[2]}: {(candidate_votes[2] / sum(candidate_votes)):.2%} ({candidate_votes[2]})
+    {candidates[0]}: {(candidate_votes[0] / sum(candidate_votes)):.3%} ({candidate_votes[0]})
+    {candidates[1]}: {(candidate_votes[1] / sum(candidate_votes)):.3%} ({candidate_votes[1]})
+    {candidates[2]}: {(candidate_votes[2] / sum(candidate_votes)):.3%} ({candidate_votes[2]})
     -------------------------
     Winner: {max(count_candidate_votes(votes), key=itemgetter(1))}
     
