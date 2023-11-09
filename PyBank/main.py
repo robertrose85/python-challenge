@@ -1,6 +1,7 @@
 import csv, os
 from operator import itemgetter
 
+# Open csv file in ..\PyBank\Resources.
 bank_csv = os.path.join("..", "PyBank\Resources", "budget_data.csv")
 
 # Function for calculating sum of profit/losses
@@ -67,10 +68,11 @@ with open(bank_csv, 'r', newline='') as bank_data:
     min_date = min(calculate_difference(bank_dict), key=itemgetter(1))[0]
     min_diff = min(calculate_difference(bank_dict), key=itemgetter(1))[1]
 
-with open("results.txt", "w", newline='') as output:
+with open("..\\PyBank\\Analysis\\results.txt", "w", newline='') as output:
 
     # Write to TXT file
-    output.write(f"""\n\nFinancial Analysis \n ---------------------------- \n 
+    output.write(f"""
+    Financial Analysis \n ---------------------------- \n 
     Total Months: {month_count}
     Profit/Losses = ${total:,}
     Average Change = ${average:,.2f}
@@ -78,7 +80,7 @@ with open("results.txt", "w", newline='') as output:
     Greatest Decrease in Profits: {min_date} ${min_diff:,}""")
     
     # Print output to console
-    print(f"""\n\nFinancial Analysis \n ---------------------------- \n 
+    print(f"""\nFinancial Analysis \n---------------------------- \n 
     Total Months: {month_count}
     Profit/Losses = ${total:,}
     Average Change = ${average:,.2f}
