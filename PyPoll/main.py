@@ -2,7 +2,7 @@ import csv, os
 from operator import itemgetter
 
 # Open csv file in ..\PyPoll\Resources.
-election_csv = os.path.join("Resources", "election_data.csv")
+election_csv = os.path.join("PyPoll", "Resources", "election_data.csv")
 
 # This function will create a dict of unique candidates but will also increment the value field for the candidates.
 def count_candidate_votes(csv):
@@ -20,7 +20,7 @@ with open(election_csv, 'r', newline='') as election_data:
     votes = [row for row in csv_reader]
 
 # Open the dir where we will output the results
-with open("Analysis\\results.txt", "w", newline='') as output:   
+with open("PyPoll\\Analysis\\results.txt", "w", newline='') as output:   
     
     # Creates a list of candidates generated from the function
     candidates = list(count_candidate_votes(votes).keys())

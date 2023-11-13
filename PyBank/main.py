@@ -2,7 +2,7 @@ import csv, os
 from operator import itemgetter
 
 # Open csv file in ..\PyBank\Resources.
-bank_csv = os.path.join("Resources", "budget_data.csv")
+bank_csv = os.path.join("PyBank", "Resources", "budget_data.csv")
 
 # Function for calculating sum of profit/losses
 def calculate_sum(dict):
@@ -68,7 +68,7 @@ with open(bank_csv, 'r', newline='') as bank_data:
     min_date = min(calculate_difference(bank_dict), key=itemgetter(1))[0]
     min_diff = min(calculate_difference(bank_dict), key=itemgetter(1))[1]
 
-with open("Analysis\\results.txt", "w", newline='') as output:
+with open("PyBank\\Analysis\\results.txt", "w", newline='') as output:
 
     # Write to TXT file
     output.write(f"""
